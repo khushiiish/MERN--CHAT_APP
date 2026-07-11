@@ -2,27 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Reset */
+/* Custom Reset & Base Overrides */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body */
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #111827;
-  color: white;
+  background-color: #0c0a09; /* Swapped to a deep stone/amber-black to match the dark shadow of the sunset cliffs */
+  color: #fff7ed; /* Soft warm white instead of harsh pure white */
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
-/* Root */
 #root {
   min-height: 100vh;
 }
 
-/* Image Container */
+/* Image App Showcase Container */
 .image-container {
   display: flex;
   justify-content: center;
@@ -31,7 +30,6 @@ body {
   padding: 20px;
 }
 
-/* Image */
 .image-container img {
   width: 100%;
   max-width: 1000px;
@@ -39,4 +37,37 @@ body {
   border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   object-fit: cover;
+}
+
+/* --- Warm Sunset Glassmorphism Scrollbar Utilities --- */
+@layer utilities {
+  /* For Chrome, Safari, and Edge */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  /* Scrollbar Track (Invisible/Subtle glass path) */
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(120, 45, 10, 0.03); 
+    border-radius: 10px;
+  }
+
+  /* Scrollbar Thumb (Sunset Orange to Amber Gradient) */
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #ea580c, #d97706);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Scrollbar Thumb Hover (Glowing Sunset) */
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #f97316, #f59e0b);
+  }
+
+  /* Firefox Support fallback */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #ea580c rgba(120, 45, 10, 0.03);
+  }
 }

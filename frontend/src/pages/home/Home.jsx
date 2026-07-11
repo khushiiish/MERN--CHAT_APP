@@ -1,5 +1,7 @@
 import React from 'react'
 import Sidebar from '../../components/sidebar/Sidebar'
+import MessageContainer from '../../components/messages/MessageContainer'
+
 
 const Home = () => {
   return (
@@ -16,7 +18,7 @@ const Home = () => {
       {/* 3. Your Sunset glassmorphism container centered perfectly */}
       <div className="relative z-10 flex sm:h-[450px] md:h-[550px] w-full max-w-4xl mx-4 rounded-xl overflow-hidden bg-amber-950/15 backdrop-filter backdrop-blur-xl border border-orange-500/20 shadow-2xl">
         <Sidebar />
-        {/* <MessageContainer /> */}
+        <MessageContainer />
       </div>
     </div>
   )
