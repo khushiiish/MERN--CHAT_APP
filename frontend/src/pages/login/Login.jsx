@@ -17,133 +17,130 @@ const Login = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/35"></div>
 
-      {/* Glass Card */}
+      {/* Glass Card - Scaled down to fit the 70% look */}
       <div
         className="
         relative
         z-10
-        w-[430px]
-        rounded-[30px]
+        w-full
+        max-w-[350px]
+        rounded-[24px]
         bg-white/10
         backdrop-blur-2xl
         border border-white/20
         shadow-2xl
-        px-8
-        py-7
+        px-6
+        py-5
         "
       >
         {/* Logo */}
-        <div className="flex justify-center mb-4">
-          <div className="w-14 h-14 rounded-full bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center">
-            <FaComments className="text-cyan-300 text-2xl" />
+        <div className="flex justify-center mb-3">
+          <div className="w-11 h-11 rounded-full bg-cyan-500/20 border border-cyan-400/30 flex items-center justify-center">
+            <FaComments className="text-cyan-300 text-xl" />
           </div>
         </div>
 
         {/* Heading */}
-        <h1 className="text-4xl font-bold text-center text-white">
+        <h1 className="text-2xl font-bold text-center text-white">
           Welcome to{" "}
           <span className="text-cyan-400">
             ChatApp
           </span>
         </h1>
 
-        <p className="text-center text-gray-300 mt-2 mb-6">
+        <p className="text-center text-xs text-gray-300 mt-1 mb-4">
           Login to continue chatting with your friends.
         </p>
 
         {/* Username */}
-        <div className="mb-4">
-          <label className="text-white text-sm mb-2 block">
+        <div className="mb-3">
+          <label className="text-white text-xs mb-1 block">
             Username
           </label>
 
-          <div className="flex items-center rounded-xl bg-white/10 border border-white/20">
-            <div className="px-4">
-              <FaUser className="text-cyan-300" />
+          <div className="flex items-center rounded-lg bg-white/10 border border-white/20">
+            <div className="px-3">
+              <FaUser className="text-cyan-300 text-xs" />
             </div>
 
             <input
               type="text"
               placeholder="Enter Username"
-              className="w-full py-3 pr-4 bg-transparent outline-none text-white placeholder-gray-300"
+              className="w-full py-1.5 pr-3 bg-transparent outline-none text-white text-sm placeholder-gray-400"
             />
           </div>
         </div>
 
         {/* Password */}
-        <div className="mb-4">
-          <label className="text-white text-sm mb-2 block">
+        <div className="mb-3">
+          <label className="text-white text-xs mb-1 block">
             Password
           </label>
 
-          <div className="flex items-center rounded-xl bg-white/10 border border-white/20">
-            <div className="px-4">
-              <FaLock className="text-cyan-300" />
+          <div className="flex items-center rounded-lg bg-white/10 border border-white/20">
+            <div className="px-3">
+              <FaLock className="text-cyan-300 text-xs" />
             </div>
 
             <input
               type="password"
               placeholder="Enter Password"
-              className="w-full py-3 pr-4 bg-transparent outline-none text-white placeholder-gray-300"
+              className="w-full py-1.5 pr-3 bg-transparent outline-none text-white text-sm placeholder-gray-400"
             />
           </div>
         </div>
 
-        {/* Remember */}
-        <div className="flex justify-between items-center text-sm mb-5">
-          <label className="flex items-center gap-2 text-gray-300">
+        {/* Remember / Forgot */}
+        <div className="flex justify-between items-center text-xs mb-4">
+          <label className="flex items-center gap-1.5 text-gray-300 cursor-pointer">
             <input
               type="checkbox"
-              className="accent-cyan-500"
+              className="accent-cyan-500 w-3.5 h-3.5 rounded"
             />
             Remember me
           </label>
 
-          <button className="text-cyan-400 hover:text-cyan-300">
+          <button className="text-cyan-400 hover:text-cyan-300 font-medium">
             Forgot?
           </button>
         </div>
 
-        {/* Login */}
+        {/* Login Button */}
         <button
           className="
           w-full
-          py-3
-          rounded-xl
+          py-2
+          rounded-lg
           bg-gradient-to-r
           from-cyan-500
           to-blue-600
           text-white
           font-semibold
-          text-lg
+          text-sm
           flex
           items-center
           justify-center
-          gap-2
-          hover:scale-[1.02]
+          gap-1.5
+          hover:scale-[1.01]
           transition-all
           duration-300
           "
         >
           Login
-          <FaArrowRight />
+          <FaArrowRight className="text-xs" />
         </button>
 
         {/* Divider */}
-        <div className="flex items-center my-5">
+        <div className="flex items-center my-4">
           <div className="flex-1 border-t border-white/20"></div>
-
-          <span className="mx-3 text-gray-300">
-            OR
-          </span>
-
+          <span className="mx-3 text-xs text-gray-400">OR</span>
           <div className="flex-1 border-t border-white/20"></div>
         </div>
 
-        {/* Sign Up */}
-        <p className="text-center text-gray-300 text-sm">
+        {/* Sign Up Link */}
+        <p className="text-center text-gray-300 text-xs">
           Don't have an account?{" "}
-          <span className="text-cyan-400 cursor-pointer hover:underline">
+          <span className="text-cyan-400 cursor-pointer hover:underline font-semibold">
             Create Account
           </span>
         </p>

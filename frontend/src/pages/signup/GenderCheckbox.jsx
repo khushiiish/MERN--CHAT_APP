@@ -2,7 +2,7 @@ import React from "react";
 
 const GenderCheckbox = () => {
   return (
-    <div className="flex gap-8">
+    <div className="flex gap-5">
       <label className="flex items-center gap-2 cursor-pointer text-white">
         <input
           type="radio"
