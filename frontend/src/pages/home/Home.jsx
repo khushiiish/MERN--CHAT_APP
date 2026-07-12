@@ -7,7 +7,7 @@ const Home = () => {
   return (
     /* 1. Full-screen wrapper that displays the background image properly */
     <div 
-      className="min-h-screen w-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
+      className="relative min-h-screen w-screen flex items-center justify-center bg-cover bg-center bg-no-repeat"
       style={{
         backgroundImage: "url('/bg.jpg')", // Looks directly into the public folder
       }}

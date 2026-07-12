@@ -1,264 +1,170 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { FaComments, FaUser, FaLock, FaArrowRight } from "react-icons/fa";
-
 import GenderCheckbox from "./GenderCheckbox";
+import { useState } from "react";
+import useSignup from "../../hooks/useSignup";
 
 const SignUp = () => {
-  return (
-    <div
-      className="relative min-h-screen bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: "url('/bg.jpg')",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30"></div>
+	const [inputs, setInputs] = useState({
+		fullName: "",
+		username: "",
+		password: "",
+		confirmPassword: "",
+		gender: "",
+	});
 
-      {/* Card Container */}
-      <div className="relative z-10 min-h-screen flex items-center justify-center px-4 py-6">
-        {/* Glass Card - Scaled down responsiveness */}
-        <div
-          className="
-          w-full
-          max-w-[360px] 
-          rounded-[22px] 
-          border
-          border-white/20
-          bg-white/10
-          backdrop-blur-3xl
-          shadow-[0_15px_45px_rgba(0,0,0,0.45)]
-          px-5 
-          py-4 
-          "
-        >
-          {/* Logo */}
-          <div className="flex justify-center mb-3">
-            <div
-              className="
-              w-10 
-              h-10 
-              rounded-full
-              border
-              border-cyan-400/30
-              bg-cyan-500/10
-              flex
-              items-center
-              justify-center
-              "
-            >
-              <FaComments className="text-cyan-300 text-xl" />
-            </div>
-          </div>
+	const { loading, signup } = useSignup();
 
-          {/* Heading */}
-          <h1 className="text-center text-2xl font-bold text-white">
-            Sign Up <span className="text-cyan-400">ChatApp</span>
-          </h1>
+	const handleCheckboxChange = (gender) => {
+		setInputs({ ...inputs, gender });
+	};
 
-          <p className="text-center text-xs text-gray-300 mt-0.5 mb-3">
-            Create your account to start chatting.
-          </p>
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		await signup(inputs);
+	};
 
-          {/* Inputs Row */}
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            {/* Full Name */}
-            <div>
-              <label className="block text-white text-xs mb-1">Full Name</label>
-              <div
-                className="
-                flex
-                items-center
-                rounded-lg
-                bg-white/10
-                border
-                border-white/20
-                focus-within:border-cyan-400
-                transition-all
-                "
-              >
-                <div className="px-3">
-                  <FaUser className="text-cyan-300 text-xs" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="John Doe"
-                  className="
-                  w-full
-                  bg-transparent
-                  py-1.5 
-                  pr-3
-                  outline-none
-                  text-white
-                  text-sm
-                  placeholder-gray-400
-                  "
-                />
-              </div>
-            </div>
+	return (
+		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
+			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+				<h1 className='text-3xl font-semibold text-center text-gray-300'>
+					Sign Up <span className='text-blue-500'> ChatApp</span>
+				</h1>
 
-            {/* Username */}
-            <div>
-              <label className="block text-white text-xs mb-1">Username</label>
-              <div
-                className="
-                flex
-                items-center
-                rounded-lg
-                bg-white/10
-                border
-                border-white/20
-                focus-within:border-cyan-400
-                transition-all
-                "
-              >
-                <div className="px-3">
-                  <FaUser className="text-cyan-300 text-xs" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="johndoe"
-                  className="
-                  w-full
-                  bg-transparent
-                  py-1.5 
-                  pr-3
-                  outline-none
-                  text-white
-                  text-sm
-                  placeholder-gray-400
-                  "
-                />
-              </div>
-            </div>
-          </div>
+				<form onSubmit={handleSubmit}>
+					<div>
+						<label className='label p-2'>
+							<span className='text-base label-text'>Full Name</span>
+						</label>
+						<input
+							type='text'
+							placeholder='John Doe'
+							className='w-full input input-bordered  h-10'
+							value={inputs.fullName}
+							onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+						/>
+					</div>
 
-          {/* Password */}
-          <div className="mb-2">
-            <label className="block text-white text-xs mb-1">Password</label>
-            <div
-              className="
-              flex
-              items-center
-              rounded-lg
-              bg-white/10
-              border
-              border-white/20
-              focus-within:border-cyan-400
-              transition-all
-              "
-            >
-              <div className="px-3">
-                <FaLock className="text-cyan-300 text-xs" />
-              </div>
-              <input
-                type="password"
-                placeholder="Enter Password"
-                className="
-                w-full
-                bg-transparent
-                py-1.5 
-                pr-3
-                outline-none
-                text-white
-                text-sm
-                placeholder-gray-400
-                "
-              />
-            </div>
-          </div>
+					<div>
+						<label className='label p-2 '>
+							<span className='text-base label-text'>Username</span>
+						</label>
+						<input
+							type='text'
+							placeholder='johndoe'
+							className='w-full input input-bordered h-10'
+							value={inputs.username}
+							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+						/>
+					</div>
 
-          {/* Confirm Password */}
-          <div className="mb-3">
-            <label className="block text-white text-xs mb-1">
-              Confirm Password
-            </label>
-            <div
-              className="
-              flex
-              items-center
-              rounded-lg
-              bg-white/10
-              border
-              border-white/20
-              focus-within:border-cyan-400
-              transition-all
-              "
-            >
-              <div className="px-3">
-                <FaLock className="text-cyan-300 text-xs" />
-              </div>
-              <input
-                type="password"
-                placeholder="Confirm Password"
-                className="
-                w-full
-                bg-transparent
-                py-1.5 
-                pr-3
-                outline-none
-                text-white
-                text-sm
-                placeholder-gray-400
-                "
-              />
-            </div>
-          </div>
+					<div>
+						<label className='label'>
+							<span className='text-base label-text'>Password</span>
+						</label>
+						<input
+							type='password'
+							placeholder='Enter Password'
+							className='w-full input input-bordered h-10'
+							value={inputs.password}
+							onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+						/>
+					</div>
 
-          {/* Gender */}
-          <div className="mb-4">
-            <label className="block text-white text-xs mb-1">Gender</label>
-            <GenderCheckbox />
-          </div>
+					<div>
+						<label className='label'>
+							<span className='text-base label-text'>Confirm Password</span>
+						</label>
+						<input
+							type='password'
+							placeholder='Confirm Password'
+							className='w-full input input-bordered h-10'
+							value={inputs.confirmPassword}
+							onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
+						/>
+					</div>
 
-          {/* Button */}
-          <button
-            className="
-            w-full
-            py-2 
-            rounded-lg
-            bg-gradient-to-r
-            from-cyan-500
-            to-blue-600
-            text-white
-            font-semibold
-            text-sm 
-            flex
-            items-center
-            justify-center
-            gap-1.5
-            hover:scale-[1.01]
-            hover:shadow-lg
-            hover:shadow-cyan-500/20
-            transition-all
-            duration-300
-            "
-          >
-            Sign Up
-            <FaArrowRight className="text-xs" />
-          </button>
+					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
 
-          {/* Divider */}
-          <div className="flex items-center my-3">
-            <div className="flex-1 border-t border-white/20"></div>
-            <span className="mx-3 text-xs text-gray-400">OR</span>
-            <div className="flex-1 border-t border-white/20"></div>
-          </div>
+					<Link
+						to={"/login"}
+						className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block'
+						href='#'
+					>
+						Already have an account?
+					</Link>
 
-          {/* Login Link */}
-          <p className="text-center text-gray-300 text-xs">
-            Already have an account?{" "}
-            <Link
-              to="/login"
-              className="text-cyan-400 hover:underline font-semibold"
-            >
-              Login
-            </Link>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
+					<div>
+						<button className='btn btn-block btn-sm mt-2 border border-slate-700' disabled={loading}>
+							{loading ? <span className='loading loading-spinner'></span> : "Sign Up"}
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	);
 };
-
 export default SignUp;
+
+// STARTER CODE FOR THE SIGNUP COMPONENT
+// import GenderCheckbox from "./GenderCheckbox";
+
+// const SignUp = () => {
+// 	return (
+// 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
+// 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
+// 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
+// 					Sign Up <span className='text-blue-500'> ChatApp</span>
+// 				</h1>
+
+// 				<form>
+// 					<div>
+// 						<label className='label p-2'>
+// 							<span className='text-base label-text'>Full Name</span>
+// 						</label>
+// 						<input type='text' placeholder='John Doe' className='w-full input input-bordered  h-10' />
+// 					</div>
+
+// 					<div>
+// 						<label className='label p-2 '>
+// 							<span className='text-base label-text'>Username</span>
+// 						</label>
+// 						<input type='text' placeholder='johndoe' className='w-full input input-bordered h-10' />
+// 					</div>
+
+// 					<div>
+// 						<label className='label'>
+// 							<span className='text-base label-text'>Password</span>
+// 						</label>
+// 						<input
+// 							type='password'
+// 							placeholder='Enter Password'
+// 							className='w-full input input-bordered h-10'
+// 						/>
+// 					</div>
+
+// 					<div>
+// 						<label className='label'>
+// 							<span className='text-base label-text'>Confirm Password</span>
+// 						</label>
+// 						<input
+// 							type='password'
+// 							placeholder='Confirm Password'
+// 							className='w-full input input-bordered h-10'
+// 						/>
+// 					</div>
+
+// 					<GenderCheckbox />
+
+// 					<a className='text-sm hover:underline hover:text-blue-600 mt-2 inline-block' href='#'>
+// 						Already have an account?
+// 					</a>
+
+// 					<div>
+// 						<button className='btn btn-block btn-sm mt-2 border border-slate-700'>Sign Up</button>
+// 					</div>
+// 				</form>
+// 			</div>
+// 		</div>
+// 	);
+// };
+// export default SignUp;

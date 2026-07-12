@@ -1,29 +1,50 @@
-import React from "react";
-
-const GenderCheckbox = () => {
-  return (
-    <div className="flex gap-5">
-      <label className="flex items-center gap-2 cursor-pointer text-white">
-        <input
-          type="radio"
-          name="gender"
-          value="male"
-          className="w-5 h-5 accent-cyan-500"
-        />
-        Male
-      </label>
-
-      <label className="flex items-center gap-2 cursor-pointer text-white">
-        <input
-          type="radio"
-          name="gender"
-          value="female"
-          className="w-5 h-5 accent-cyan-500"
-        />
-        Female
-      </label>
-    </div>
-  );
+const GenderCheckbox = ({ onCheckboxChange, selectedGender }) => {
+	return (
+		<div className='flex'>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer ${selectedGender === "male" ? "selected" : ""} `}>
+					<span className='label-text'>Male</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "male"}
+						onChange={() => onCheckboxChange("male")}
+					/>
+				</label>
+			</div>
+			<div className='form-control'>
+				<label className={`label gap-2 cursor-pointer  ${selectedGender === "female" ? "selected" : ""}`}>
+					<span className='label-text'>Female</span>
+					<input
+						type='checkbox'
+						className='checkbox border-slate-900'
+						checked={selectedGender === "female"}
+						onChange={() => onCheckboxChange("female")}
+					/>
+				</label>
+			</div>
+		</div>
+	);
 };
-
 export default GenderCheckbox;
+
+// STARTER CODE FOR THIS FILE
+// const GenderCheckbox = () => {
+// 	return (
+// 		<div className='flex'>
+// 			<div className='form-control'>
+// 				<label className={`label gap-2 cursor-pointer`}>
+// 					<span className='label-text'>Male</span>
+// 					<input type='checkbox' className='checkbox border-slate-900' />
+// 				</label>
+// 			</div>
+// 			<div className='form-control'>
+// 				<label className={`label gap-2 cursor-pointer`}>
+// 					<span className='label-text'>Female</span>
+// 					<input type='checkbox' className='checkbox border-slate-900' />
+// 				</label>
+// 			</div>
+// 		</div>
+// 	);
+// };
+// export default GenderCheckbox;
