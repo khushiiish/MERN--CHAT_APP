@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Messages from "./Messages";
-
+import { useState, useEffect } from "react";
 import LogoutButton from "../sidebar/LogoutButton";
 import MessageInput from "./MessageInput";
 import { TiMessages } from "react-icons/ti";
